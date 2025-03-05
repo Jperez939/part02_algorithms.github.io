@@ -8,17 +8,17 @@
 
         /* STYLE FOR THE INPUT FIELD */
         body {
-            background-color: rgb(251, 239, 221);
+            background-color: rgb(4, 46, 87);
             text-align: center;
         }
         #charInput1 {
             margin-top: 5px;
             border-radius: 20px;
-            background-color: rgb(142, 54, 40);
-            border-color: rgb(184, 148, 142);
-            color: rgb(251, 239, 221);
+            background-color: rgb(4, 46, 87);
+            border-color: rgb(139, 152, 165);
+            color: rgb(251, 239, 191);
             text-align: center;
-            padding:4px;
+            padding: 4px;
             font-weight: Bold;
             width: 175px;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -27,9 +27,9 @@
         #charInput2 {
             margin-top: 5px;
             border-radius: 20px;
-            background-color: rgb(142, 54, 40);
-            border-color: rgb(184, 148, 142);
-            color: rgb(251, 239, 221);
+            background-color: rgb(4, 46, 87);
+            border-color: rgb(139, 152, 165);
+            color: rgb(251, 239, 191);
             text-align: center;
             padding: 4px;
             font-weight: Bold;
@@ -38,24 +38,29 @@
         }
 
         h2 {
-            color:rgb(251, 239, 221);
+            color:rgb(251, 239, 191);
             text-align: center;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 22px;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         }
         /* STYLE FOR THE SUBMIT BUTTON */
         #submitButton {
+            transition: 1s;
             font-weight: bold;
             border-radius: 20px;
             margin-top: 5px;
             padding: 5px;
             padding-left: 10px;
             padding-right: 10px;
-            background-color: rgb(251, 239, 221);
-            border-color: rgb(184, 148, 142);
-            color:rgb(142, 54, 40);
+            background-color: rgb(4, 46, 87);
+            border-color: rgb(139, 152, 165);
+            color:rgb(202, 192, 153);
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #submitButton:hover {
+            background-color: rgb(202, 192, 153);
+            color: rgb(4, 46, 87);
         }
 
         /* STYLE FOR THE IMAGE */
@@ -68,7 +73,7 @@
             border-radius: 40px;
         }
         .mainbox {
-            background-color: rgb(184, 148, 142);
+            background-color: rgb(98, 122, 145);
             width: 40%;
             margin-left: auto;
             margin-right: auto;
@@ -78,49 +83,163 @@
             margin-bottom: 50px;
         }
         input::placeholder {
-            color: rgb(184, 148, 142);
+            color: rgb(139, 152, 165);
             opacity: 50%;
+        }
+        #outputText {
+            color:rgb(251, 239, 191);
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 18px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #outputText02, #outputText04, #outputText06 {
+            color: rgb(0, 18, 38);
+            font-weight: bold;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            margin-top: 18px;
+        }
+        #outputText03, #outputText05, #outputText07 {
+            color: rgb(4, 30, 56);
+            font-weight: bold;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            margin-top: 3px;
+            font-size: 15px;
+            margin-left: 80px;
+            margin-right: 80px;
+        }
+        @media (max-width: 900px) {
+            #outputText03, #outputText05, #outputText07 {
+                margin-left: 40px;
+                margin-right: 40px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="mainbox">
-        <h2>ENTER A VALID LETTER/ NUMBER TO GET A DOG</h2>
+        <h2>CHOOSE YOUR DOG...</h2>
         <input type="text" id="charInput1" maxlength="1" placeholder="ENTER LETTER (A-C)" pattern="[A-C]">
         <input type="text" id="charInput2" maxlength="1" placeholder="ENTER NUMBER (1-3)" pattern="[1-3]">
 
         <button onclick="displayImage()" id="submitButton">SHOW IMAGE</button>
 
         <img id="displayedImage" src="" alt="Displayed Image">
+        <div id="outputText"></div>
+        <div id="outputText02"></div>
+        <div id="outputText03"></div>
+        <div id="outputText04"></div>
+        <div id="outputText05"></div>
+        <div id="outputText06"></div>
+        <div id="outputText07"></div>
 
         <script>
             function displayImage() {
                 const imgElement = document.getElementById("displayedImage");
+                const outputText = document.getElementById("outputText");
+                const outputText02 = document.getElementById("outputText02");
+                const outputText03 = document.getElementById("outputText03");
+                const outputText04 = document.getElementById("outputText04");
+                const outputText05 = document.getElementById("outputText05");
+                const outputText06 = document.getElementById("outputText06");
+                const outputText07 = document.getElementById("outputText07");
 
                 const input1 = document.getElementById("charInput1").value.toUpperCase();
                 const input2 = document.getElementById("charInput2").value;
+                
+                outputText.innerHTML = '';
 
 
                 if (input1 === "A" && input2 === "1") {
-                    imgElement.src = "https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*";
+                    imgElement.src = "akitadog.jpg";
+                    outputText.innerHTML = "YOU SELECTED THE AKITA DOG!";
+                    outputText02.innerHTML = "| FUN FACT |";
+                    outputText03.innerHTML = "Although originating from Japan, the Akita has an American equivalent mix";
+                    outputText04.innerHTML = "| DISTINCTIVE FEATURE |";
+                    outputText05.innerHTML = "Pointed ears and upward curving tail";
+                    outputText06.innerHTML = "| TEMPERAMENT |";
+                    outputText07.innerHTML = "Intelligent, courageous and fearless";
                 } else if (input1 === "A" && input2 === "2") {
-                    imgElement.src = "https://cdn.britannica.com/08/234208-050-C9A21C4C/English-bulldog-dog.jpg";
+                    imgElement.src = "airedaleTerrier.jpg";
+                    outputText.innerHTML = "YOU SELECTED THE AIREDALE TERRIER DOG!";
+                    outputText02.innerHTML = "| FUN FACT |";
+                    outputText03.innerHTML = "The Airedale was originally bred to catch vermin, but it became an all-around sporting, guide, and military/police dog.";
+                    outputText04.innerHTML = "| DISTINCTIVE FEATURE |";
+                    outputText05.innerHTML = "Long muzzle and square body";
+                    outputText06.innerHTML = "| TEMPERAMENT |";
+                    outputText07.innerHTML = "Friendly, adaptable and courageous";
                 } else if (input1 === "A" && input2 === "3") {
-                    imgElement.src = "https://petzpark.com.au/cdn/shop/articles/German-Shepherd_900x.jpg?v=1663679287";
+                    imgElement.src = "Affenpinscher.jpg";
+                    outputText.innerHTML = "YOU SELECTED THE AFFENPINSCHER DOG!";
+                    outputText02.innerHTML = "| FUN FACT |";
+                    outputText03.innerHTML = "The German name Affenpinscher translates to monkey dog. This pup’s face is similar to a monkey’s!";
+                    outputText04.innerHTML = "| DISTINCTIVE FEATURE |";
+                    outputText05.innerHTML = "Dark wiry-haired body and dark eyes";
+                    outputText06.innerHTML = "| TEMPERAMENT |";
+                    outputText07.innerHTML = "Alert and inquisitive";
                 } else if (input1 === "B" && input2 === "1") {
-                    imgElement.src = "https://cdn05.zipify.com/DUKBYA87JlsDSU7t2G2PCqjoUTo=/fit-in/3840x0/55a3f71ceb7745bb8cb9e4db92c1fe6d/6.jpeg";
+                    imgElement.src = "barbet.jpg";
+                    outputText.innerHTML = "YOU SELECTED THE BARBET DOG!";
+                    outputText02.innerHTML = "| FUN FACT |";
+                    outputText03.innerHTML = "This dog has the nickname ‘Mud dog’ because it likes to play in muddy, swamp-like areas.";
+                    outputText04.innerHTML = "| DISTINCTIVE FEATURE |";
+                    outputText05.innerHTML = "The breeds beard";
+                    outputText06.innerHTML = "| TEMPERAMENT |";
+                    outputText07.innerHTML = "Sweet and social";
                 } else if (input1 === "B" && input2 === "2") {
-                    imgElement.src = "https://static01.nyt.com/images/2022/05/10/science/28DOGS-BEHAVIOR1/28DOGS-BEHAVIOR1-mediumSquareAt3X-v2.jpg";
+                    imgElement.src = "bichonFrise.jpg";
+                    outputText.innerHTML = "YOU SELECTED THE BICHON FRISE DOG!";
+                    outputText02.innerHTML = "| FUN FACT |";
+                    outputText03.innerHTML = "They would commonly be found on Spanish ships where they provided companionship, entertainment, and pest control services.";
+                    outputText04.innerHTML = "| DISTINCTIVE FEATURE |";
+                    outputText05.innerHTML = "White, curly coat, dark eyes & nose, and a fluffy tail";
+                    outputText06.innerHTML = "| TEMPERAMENT |";
+                    outputText07.innerHTML = "Happy, playful and energetic";
                 } else if (input1 === "B" && input2 === "3") {
-                    imgElement.src = "https://www.pdsa.org.uk/media/7893/husky-gallery-outdoors-2-min.jpg?anchor=center&mode=crop&quality=100&height=500&bgcolor=fff&rnd=132179622130000000";
+                    imgElement.src = "brittany.jpg";
+                    outputText.innerHTML = "YOU SELECTED THE BRITTANY DOG!";
+                    outputText02.innerHTML = "| FUN FACT |";
+                    outputText03.innerHTML = "They are one of the most versatile hunting dog breeds, excelling at both pointing and retrieving birds thanks to their keen sense of smell";
+                    outputText04.innerHTML = "| DISTINCTIVE FEATURE |";
+                    outputText05.innerHTML = "Dense coat, floppy ears, and long legs";
+                    outputText06.innerHTML = "| TEMPERAMENT |";
+                    outputText07.innerHTML = "Upbeat, friendly, and sensitive";
                 } else if (input1 === "C" && input2 === "1") {
-                    imgElement.src = "https://www.1800petmeds.com/on/demandware.static/-/Sites-1800petmeds-Library/default/dw9ebc3b82/iStock-1759887316.jpg";
+                    imgElement.src = "corgi.jpg";
+                    outputText.innerHTML = "YOU SELECTED THE CORGI DOG!";
+                    outputText02.innerHTML = "| FUN FACT |";
+                    outputText03.innerHTML = "The word 'corgi' translates to 'dwarf dog' in Welsh, they are originally herding dogs and the Royal Family is known to love Corgis";
+                    outputText04.innerHTML = "| DISTINCTIVE FEATURE |";
+                    outputText05.innerHTML = "Short stature, fox-like faces, and prick ears";
+                    outputText06.innerHTML = "| TEMPERAMENT |";
+                    outputText07.innerHTML = "Playful, outgoing, and bold";
                 } else if (input1 === "C" && input2 === "2") {
-                    imgElement.src = "https://hips.hearstapps.com/goodhousekeeping/assets/16/08/gettyimages-179494696.jpg";
+                    imgElement.src = "cavapoo.jpg";
+                    outputText.innerHTML = "YOU SELECTED THE CAVAPOO DOG!";
+                    outputText02.innerHTML = "| FUN FACT |";
+                    outputText03.innerHTML = "The temperament of a Cavapoo allows this breed to make an excellent family dog as well as a great therapy dog";
+                    outputText04.innerHTML = "| DISTINCTIVE FEATURE |";
+                    outputText05.innerHTML = "Teddy bear-like appearance (round faces, big eyes, and soft coats)";
+                    outputText06.innerHTML = "| TEMPERAMENT |";
+                    outputText07.innerHTML = "Good-natured, affectionate, and loyal";
                 } else if (input1 === "C" && input2 === "3") {
-                    imgElement.src = "https://puppymansionmiami.com/cdn/shop/articles/Discovering_the_World_of_Poodles.webp?v=1723277648";
+                    imgElement.src = "chowchow.jpg";
+                    outputText.innerHTML = "YOU SELECTED THE CHOW CHOW DOG!";
+                    outputText02.innerHTML = "| FUN FACT |";
+                    outputText03.innerHTML = "The Chow Chow's lineage is hundred of years old";
+                    outputText04.innerHTML = "| DISTINCTIVE FEATURE |";
+                    outputText05.innerHTML = "The adult Cho Chow have a blue tongue";
+                    outputText06.innerHTML = "| TEMPERAMENT |";
+                    outputText07.innerHTML = "Not sociable, sometimes aggressive, and often suspicious of strangers";
                 } else {
                     imgElement.src = "https://upload.wikimedia.org/wikipedia/commons/c/ca/Transparent_X.png";
+                    outputText.innerHTML = "Please Only Enter The Valid Letter (A-C)/ Number (1-3)!";
+                    outputText02.innerHTML = "";
+                    outputText03.innerHTML = "";
+                    outputText04.innerHTML = "";
+                    outputText05.innerHTML = "";
+                    outputText06.innerHTML = "";
+                    outputText07.innerHTML = "";
                 }
 
                 imgElement.style.display = "block";
